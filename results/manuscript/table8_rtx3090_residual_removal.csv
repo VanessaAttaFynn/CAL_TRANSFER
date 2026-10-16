@@ -1,0 +1,6 @@
+Largest_residuals_removed,n,Zero_shot_MAPE,Kendall_tau
+0,88,33.49,0.662
+1,87,33.3,0.658
+2,86,33.24,0.673
+3,85,33.18,0.673
+5,83,33.15,0.703

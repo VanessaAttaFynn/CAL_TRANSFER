@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+results/cal_transfer_rerun/
+data/processed/ec_nas/cal_transfer_complete_case_88*.csv
+~$*

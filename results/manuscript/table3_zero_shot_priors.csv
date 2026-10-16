@@ -1,0 +1,5 @@
+Target,Geometric,TDP_scaled,Peak_FLOPs_scaled,Bandwidth_scaled
+Quadro RTX 6000,27.2,23.1,32.7,14.9
+RTX 3060,67.7,11.4,14.1,17.1
+RTX 3090,33.5,91.7,217.9,123.5
+Titan Xp,28.9,28.7,55.7,36.1

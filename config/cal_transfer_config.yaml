@@ -1,0 +1,48 @@
+# CAL-TRANSFER manuscript-specific reproducibility configuration
+data:
+  hardware_table: data/processed/ec_nas/ec_nas_4v_hardware_features.csv
+  architecture_table: data/processed/ec_nas/ec_nas_features.csv
+  target_column: target
+  architecture_id: architecture_hash
+  gpu_column: gpu_type
+  epochs: 4
+  batch_size: 256
+
+hardware:
+  - Quadro RTX 6000
+  - RTX 3060
+  - RTX 3090
+  - Titan Xp
+
+matched_history:
+  expected_complete_case_architectures: 88
+  calibration_pool_size: 64
+  target_test_size: 24
+  outer_splits: 200
+  random_pilot_draws: 100
+  budgets: [0, 1, 2, 4, 8, 16, 32]
+  base_seed: 42
+  source_prior: geometric_mean
+  scale_estimator: median_log_residual
+  coverage:
+    first_point: nearest_centroid
+    subsequent_points: maximin
+  local_residual:
+    enabled: true
+    k_neighbors: 5
+    shrinkage_cap: 0.8
+    shrinkage_rule: "alpha_k=min(0.8,k/10)"
+    bandwidth_rule: "median K-neighbour distance + epsilon"
+
+inductive_stress_test:
+  repeats: 50
+  source_model_train_architectures: 44
+  calibration_candidates: 24
+  target_test_architectures: 20
+  budgets: [0, 1, 2, 4, 8, 16]
+  base_seed: 42
+  random_forest:
+    n_estimators: 100
+    min_samples_leaf: 2
+    max_features: 1.0
+  interpretation: compound_robustness_test
